@@ -1,10 +1,10 @@
 ---
-- name: Start NZBGet
+- name: Restart NZBGet
   ansible.builtin.service:
     name: nzbget
     daemon_reload: yes
     enabled: yes
-    state: started
+    state: restarted
 
 - name: Save iptables v4 rules
   ansible.builtin.shell: iptables-save > /etc/iptables/rules.v4

@@ -33,3 +33,19 @@ def test_firewall(host):
         '-m conntrack --ctstate ESTABLISHED '
         '-m comment --comment "Allow HTTP traffic" -j ACCEPT'
     ) in i.rules('filter', 'OUTPUT')
+
+
+def test_user(host):
+    u = host.user('nzbget')
+
+    assert u.exists
+    assert 'nzbget' in u.groups
+    assert 'media' in u.groups
+    assert u.password == '!'
+    assert u.shell == '/usr/bin/env nologin'
+
+
+def test_nzbget_user(host):
+    p = host.process.get(user="nzbget")
+
+    assert 'nzbget' in p.comm
