@@ -1,0 +1,14 @@
+[Unit]
+Description=NZBGet Daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/nzbget -D
+ExecStop=/usr/bin/nzbget -Q
+ExecReload=/usr/bin/nzbget -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

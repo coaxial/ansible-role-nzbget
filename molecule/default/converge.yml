@@ -5,3 +5,8 @@
     - name: "Include coaxial.nzbget"
       ansible.builtin.include_role:
         name: "coaxial.nzbget"
+
+    - name: Install curl (for tests)
+      ansible.builtin.package:
+        name: curl
+        state: present

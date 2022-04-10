@@ -1,0 +1,17 @@
+---
+- name: Install NZBGet
+  ansible.builtin.package:
+    name: nzbget
+    state: present
+  notify:
+    - Start NZBGet
+
+- name: Create NZBGet systemd unit
+  ansible.builtin.copy:
+    src: nzbget.service
+    dest: /etc/systemd/system/nzbget.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Start NZBGet
