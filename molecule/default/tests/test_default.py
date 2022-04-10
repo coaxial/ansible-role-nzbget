@@ -11,6 +11,7 @@ def test_nzbget_service(host):
 
     assert s.is_enabled
     assert s.is_running
+    assert s.systemd_properties['User'] == 'nzbget'
 
 
 def test_nzbget_http(host):
@@ -43,9 +44,3 @@ def test_user(host):
     assert 'media' in u.groups
     assert u.password == '!'
     assert u.shell == '/usr/bin/env nologin'
-
-
-def test_nzbget_user(host):
-    p = host.process.get(user="nzbget")
-
-    assert 'nzbget' in p.comm
