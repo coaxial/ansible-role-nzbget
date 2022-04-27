@@ -12,6 +12,7 @@ def test_nzbget_service(host):
     assert s.is_enabled
     assert s.is_running
     assert s.systemd_properties['User'] == 'nzbget'
+    assert s.systemd_properties['Group'] == 'media'
 
 
 def test_nzbget_http(host):
