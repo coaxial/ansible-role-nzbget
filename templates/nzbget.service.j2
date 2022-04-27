@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User={{ nzbget__username }}
-Group={{ nzbget__username }}
+Group={{ nzbget__group }}
 Type=forking
 ExecStart=/usr/bin/nzbget -D
 ExecStop=/usr/bin/nzbget -Q
