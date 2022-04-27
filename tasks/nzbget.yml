@@ -25,3 +25,11 @@
     mode: "0644"
   notify:
     - Restart NZBGet
+
+- name: Install 7z, unrar
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - p7zip-full
+    - unrar
